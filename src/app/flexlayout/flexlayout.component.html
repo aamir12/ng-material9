@@ -1,0 +1,80 @@
+<h1>fxLayout</h1>
+
+<!-- fxLayout; by default value is row -->
+<div fxLayout>
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+</div>
+
+<div fxLayout="column">
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+</div>
+
+<div fxLayout="row-reverse">
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+</div>
+
+<div fxLayout="column-reverse">
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+</div>
+
+<h1>fxLayoutAlign</h1>
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+  <div class="one box"></div>
+  <div class="two box"></div>
+  <div class="three box"></div>
+</div>
+
+<h1>fxFlex</h1>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div class="one box" fxFlex="100px"></div>
+  <div class="two box" fxFlex="200px"></div>
+  <div class="three box" fxFlex="50px"></div>
+</div>
+
+<h1>fxFlexOrder</h1>
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px">
+  <div class="one box" fxFlexOrder="3">One</div>
+  <div class="two box" fxFlexOrder="2">Two</div>
+  <div class="three box" fxFlexOrder="1">Three</div>
+</div>
+
+<h1>fxFlexOffset</h1>
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px">
+  <div class="one box" fxFlex fxFlexOffset="500px">One</div>
+  <div class="two box">Two</div>
+  <div class="three box">Three</div>
+</div>
+
+<h1>fxFlexAlign</h1>
+<div fxLayout="column">
+  <div class="one box" fxFlexAlign="center">One</div>
+  <div class="two box">Two</div>
+  <div class="three box">Three</div>
+</div>
+
+<h1>fxShow and fxHide</h1>
+<div fxLayout="column" fxShow="true" fxHide.xs="true">
+  <div class="one box" fxFlexAlign="center">One</div>
+  <div class="two box">Two</div>
+  <div class="three box">Three</div>
+</div>

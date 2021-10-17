@@ -1,0 +1,33 @@
+<mat-sidenav-container class="example-container" *ngIf="isLoggedIn">
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <i class="material-icons">menu</i>
+      </button>
+      <span class="example-fill-remaining-space"></span>
+      <span class="user-text">Welcome Guest</span>
+
+      <button class="ml-2" (click)="sidenav2.toggle()" mat-button>Theme</button>
+
+      <button class="ml-2" (click)="isLoggedIn = false" mat-button>
+        Logout
+      </button>
+    </mat-toolbar>
+    <div class="main-cont">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav2 mode="side" position="end">
+    <app-side-bar></app-side-bar>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<div *ngIf="!isLoggedIn">
+  Login
+  <button (click)="isLoggedIn = true">Login</button>
+  <router-outlet></router-outlet>
+</div>

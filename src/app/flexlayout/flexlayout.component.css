@@ -1,0 +1,22 @@
+.box {
+  width: 200px;
+  height: 200px;
+}
+
+.mt-5 {
+  margin-top: 50px;
+}
+
+.border {
+  border: 1px solid brown;
+}
+.one {
+  background: green;
+}
+
+.two {
+  background: red;
+}
+.three {
+  background: greenyellow;
+}
