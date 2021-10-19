@@ -9,6 +9,7 @@ import { FormComponent } from "./form/form.component";
 import { LoginComponent } from "./login/login.component";
 import { SortingComponent } from "./sorting/sorting.component";
 import { FlexlayoutComponent } from "./flexlayout/flexlayout.component";
+import { FxDesignComponent } from "./fx-design/fx-design.component";
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: "flexlayout",
     component: FlexlayoutComponent,
+  },
+  {
+    path: "flexDesign",
+    component: FxDesignComponent,
   },
   { path: "", redirectTo: "/grid-list", pathMatch: "full" },
 ];

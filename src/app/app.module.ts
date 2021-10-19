@@ -19,6 +19,7 @@ import { HeaderBarComponent } from "./header-bar/header-bar.component";
 import { LoginComponent } from "./login/login.component";
 import { SortingComponent } from "./sorting/sorting.component";
 import { FlexlayoutComponent } from './flexlayout/flexlayout.component';
+import { FxDesignComponent } from './fx-design/fx-design.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FlexlayoutComponent } from './flexlayout/flexlayout.component';
     LoginComponent,
     SortingComponent,
     FlexlayoutComponent,
+    FxDesignComponent,
   ],
   imports: [
     BrowserModule,

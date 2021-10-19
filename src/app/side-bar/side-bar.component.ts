@@ -38,6 +38,10 @@ export class SideBarComponent implements OnInit {
         name: "Flexlayout",
         link: "/flexlayout",
       },
+      {
+        name: "Flex Design",
+        link: "/flexDesign",
+      },
     ];
   }
 }

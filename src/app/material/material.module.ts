@@ -12,6 +12,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatTableModule } from "@angular/material/table";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatMenuModule } from "@angular/material/menu";
 const materialComponents = [
   MatButtonModule,
   MatIconModule,
@@ -26,6 +29,9 @@ const materialComponents = [
   MatTabsModule,
   MatTableModule,
   DragDropModule,
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatMenuModule,
 ];
 
 @NgModule({
