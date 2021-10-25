@@ -20,6 +20,10 @@ import { LoginComponent } from "./login/login.component";
 import { SortingComponent } from "./sorting/sorting.component";
 import { FlexlayoutComponent } from './flexlayout/flexlayout.component';
 import { FxDesignComponent } from './fx-design/fx-design.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
+import { EmployeeService } from "./shared/employee.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { FxDesignComponent } from './fx-design/fx-design.component';
     SortingComponent,
     FlexlayoutComponent,
     FxDesignComponent,
+    EmployeesComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +51,9 @@ import { FxDesignComponent } from './fx-design/fx-design.component';
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -15,6 +15,16 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatMenuModule } from "@angular/material/menu";
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from "@angular/material";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 const materialComponents = [
   MatButtonModule,
   MatIconModule,
@@ -32,6 +42,15 @@ const materialComponents = [
   MatAutocompleteModule,
   MatBadgeModule,
   MatMenuModule,
+  MatDialogModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
