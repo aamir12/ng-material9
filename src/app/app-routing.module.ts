@@ -12,6 +12,7 @@ import { FlexlayoutComponent } from "./flexlayout/flexlayout.component";
 import { FxDesignComponent } from "./fx-design/fx-design.component";
 import { EmployeesComponent } from "./employees/employees.component";
 import { EmployeeComponent } from "./employees/employee/employee.component";
+import { ResponsiveLayoutComponent } from "./responsive-layout/responsive-layout.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: "employees/add",
     component: EmployeeComponent,
+  },
+  {
+    path:"responsiveLayout",
+    component:ResponsiveLayoutComponent
   },
   { path: "", redirectTo: "/grid-list", pathMatch: "full" },
 ];

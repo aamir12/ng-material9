@@ -46,6 +46,10 @@ export class SideBarComponent implements OnInit {
         name: "Employees",
         link: "/employees",
       },
+      {
+        name: "Responsive Layout",
+        link: "/responsiveLayout",
+      },
     ];
   }
 }
