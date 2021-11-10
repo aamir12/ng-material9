@@ -1,0 +1,170 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Form Array Reactive Form</mat-card-title>
+    <mat-card-subtitle>Include all the types of controls</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content fxLayout="column center" class="px-20">
+    <h3>Create New Team</h3>
+    <div class="team">
+      <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+        <p>
+          <b>Team Name : </b> <input formControlName="teamName" /> <br /><label
+            *ngIf="teamName?.dirty && teamName?.errors?.required"
+            class="error"
+          >
+            Team name required.
+          </label>
+        </p>
+        <b> Employees in Team :</b><br /><br />
+        <label *ngIf="employees?.errors?.required" class="error">
+          Employee required.
+        </label>
+        <label *ngIf="employees?.errors?.maxlength" class="error">
+          Max number of Employee can be 5 only.
+        </label>
+        <div formArrayName="employees">
+          <div
+            *ngFor="let emp of employees.controls; let i = index"
+            class="employee"
+          >
+            <p>
+              <b>Employee {{ i + 1 }} : </b>
+              <input [formControlName]="i" />
+              <button type="button" (click)="deleteEmployeeControl(i)">
+                Delete
+              </button>
+            </p>
+          </div>
+        </div>
+        <button type="button" (click)="addEmployeeControl()">
+          Add More Employee</button
+        ><br />
+        <button type="button" (click)="insertEmployeeControl()">
+          Insert Employee at number 2</button
+        ><br />
+        <button type="button" (click)="patchEmployeeValue()">Patch Value</button
+        ><br />
+        <button type="button" (click)="setEmployeeValue()">
+          Create Default Employee List</button
+        ><br />
+        <button type="button" (click)="setEmployeeControl()">
+          Set Default Employee at number 3</button
+        ><br />
+        <button type="button" (click)="resetEmployees()">Reset Employees</button
+        ><br />
+        <button type="button" (click)="clearEmployeeControls()">
+          clear Employees</button
+        ><br /><br />
+        <button [disabled]="teamForm.invalid">SUBMIT</button>
+        <!-- IN case of array of formGroup -->
+        <!-- <div formArrayName="addressDetails">
+            <div
+              *ngFor="let group of addressArray.controls; let i = index"
+              [formGroupName]="i"
+              class="dymicRow"
+            >
+              <div class="d-flex flex-wrap flex-row justify-content-between">
+                <h2>Address {{ i + 1 }}</h2>
+                <div>
+                  <button
+                    type="button"
+                    (click)="addAddress()"
+                    class="btn btn-primary btn-sm"
+                    [ngClass]="{ 'mr-2': i !== 0 }"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button
+                    type="button"
+                    (click)="removeAddress(i)"
+                    class="btn btn-danger btn-sm"
+                    *ngIf="addressArray.controls.length > 1 && i !== 0"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+    
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="address{{ i }}"
+                    >Steert Address <span class="text-danger">*</span></label
+                  >
+                  <textarea
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    id="address{{ i }}"
+                    formControlName="address"
+                    placeholder="Street Address"
+                  ></textarea>
+                  <div
+                    class="inp-err"
+                    *ngIf="
+                      group.controls.address.invalid &&
+                      isSubmit &&
+                      group.controls.address.errors['required']
+                    "
+                  >
+                    Required.
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="city{{ i }}"
+                    >City <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="city"
+                    class="form-control"
+                    id="city{{ i }}"
+                    formControlName="city"
+                    placeholder="City"
+                  />
+                  <div
+                    class="inp-err"
+                    *ngIf="
+                      group.controls.city.invalid &&
+                      isSubmit &&
+                      group.controls.city.errors['required']
+                    "
+                  >
+                    Required.
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="state{{ i }}"
+                    >State<span class="text-danger">*</span></label
+                  >
+                  <select
+                    name="state{{ i }}"
+                    class="form-control"
+                    id="state"
+                    placeholder="Select state"
+                    formControlName="state"
+                  >
+                    <option selected [ngValue]="null">Select your state</option>
+                    <option *ngFor="let item of states" [value]="item">
+                      {{ item }}
+                    </option>
+                  </select>
+                  <div
+                    class="inp-err"
+                    *ngIf="
+                      group.controls.state.invalid &&
+                      isSubmit &&
+                      group.controls.state.errors['required']
+                    "
+                  >
+                    Required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+      </form>
+    </div>
+
+    <pre>{{ teamForm.value | json }}</pre>
+  </mat-card-content>
+</mat-card>
