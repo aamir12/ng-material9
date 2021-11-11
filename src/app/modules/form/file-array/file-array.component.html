@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>File Form Array Reactive Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column center">
+        <form [formGroup]="docForm" (ngSubmit)="onFormSubmit()">
+            <b> Employees in Team :</b><br /><br />
+            <label *ngIf="baseUrls?.errors?.required" class="error">
+              Files are requied.
+            </label>
+            <label *ngIf="baseUrls?.errors?.maxlength" class="error">
+              Max number of Employee can be 5 only.
+            </label>
+            <div formArrayName="baseUrls" fxLayout="column" fxLayoutGap="10px">
+              <div
+                *ngFor="let baseUrl of baseUrls.controls; let i = index" fxLayout="row wrap" fxFlexAlign="space-between center" class="w-100" >
+                 
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                    <input type="file"  #inputFile class="d-none" (change)="onSelectedFile($event,i)"/>
+                    <button type="button" mat-raised-button color="primary" (click)="pick(i)"> Attach </button>
+                    <mat-form-field class="example-form-field" >
+                        <input type="text" matInput [formControlName]="i"/>
+                    </mat-form-field>
+                </div>
+                  
+
+                  <div fxLayout="row" fxLayoutGap="5px">
+                    <button type="button" mat-raised-button color="accent" (click)="add()" *ngIf="i==0 && baseUrls.length<5">
+                        Add
+                      </button>
+                      <button type="button" mat-raised-button color="warn"  (click)="remove(i)" *ngIf="i>0">
+                        Delete
+                      </button>
+                  </div>
+                  
+                
+              </div>
+            </div>
+            
+            <button type="submit" [disabled]="docForm.invalid"> Submit</button>
+            {{ docForm.value | json  }}
+        </form>
+    </mat-card-content>
+</mat-card>

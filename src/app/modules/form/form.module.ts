@@ -5,9 +5,10 @@ import { FormRoutingModule } from "./form-routing.module";
 import { FormComponent } from "./form.component";
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { ArryFormComponent } from './arry-form/arry-form.component';
+import { FileArrayComponent } from './file-array/file-array.component';
 
 @NgModule({
-  declarations: [FormComponent, BasicFormComponent, ArryFormComponent],
+  declarations: [FormComponent, BasicFormComponent, ArryFormComponent, FileArrayComponent],
   imports: [CommonModule, SharedModule, FormRoutingModule],
 })
 export class FormModule {}
