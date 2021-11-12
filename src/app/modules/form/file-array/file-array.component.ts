@@ -9,19 +9,20 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class FileArrayComponent implements OnInit {
   docForm:FormGroup;
   @ViewChildren('inputFile') inputFile:QueryList<ElementRef>
+  urlPattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
   constructor() { }
 
   ngOnInit() {
     this.docForm = new FormGroup({
       baseUrls : new FormArray(
-        [new FormControl(null,[Validators.required])],
+        [new FormControl(null,[Validators.required,Validators.pattern(this.urlPattern)])],
         [Validators.required, Validators.maxLength(5)]
       )
     })
   }
 
   add(){
-    this.baseUrls.push(new FormControl(null,[Validators.required]))
+    this.baseUrls.push(new FormControl(null,[Validators.required,Validators.pattern(this.urlPattern)]))
   }
 
   remove(i){
@@ -51,7 +52,7 @@ export class FileArrayComponent implements OnInit {
       }
 
       console.log(file)
-      this.baseUrls.at(i).setValue(file.name);
+      this.baseUrls.at(i).setValue('http://google.com/'+file.name);
     }
   }
 }

@@ -11,25 +11,28 @@
             <label *ngIf="baseUrls?.errors?.maxlength" class="error">
               Max number of Employee can be 5 only.
             </label>
-            <div formArrayName="baseUrls" fxLayout="column" fxLayoutGap="10px">
+            <div formArrayName="baseUrls" fxLayout="column" fxLayoutGap="10px" >
               <div
-                *ngFor="let baseUrl of baseUrls.controls; let i = index" fxLayout="row wrap" fxFlexAlign="space-between center" class="w-100" >
+                *ngFor="let baseUrl of baseUrls.controls; let i = index" fxLayout="row wrap"  fxFlex="1" fxLayoutAlign="space-between center">
                  
-                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" >
                     <input type="file"  #inputFile class="d-none" (change)="onSelectedFile($event,i)"/>
-                    <button type="button" mat-raised-button color="primary" (click)="pick(i)"> Attach </button>
+                    <button type="button" fxLayoutAlign="center center" mat-raised-button color="primary" (click)="pick(i)"> <mat-icon> attach_file</mat-icon> Attachment </button>
                     <mat-form-field class="example-form-field" >
                         <input type="text" matInput [formControlName]="i"/>
+                        <mat-error *ngIf="baseUrl.hasError('required')">Required</mat-error>
+                        <mat-error *ngIf="baseUrl.hasError('pattern')">Invalid Url</mat-error>
                     </mat-form-field>
                 </div>
                   
 
                   <div fxLayout="row" fxLayoutGap="5px">
-                    <button type="button" mat-raised-button color="accent" (click)="add()" *ngIf="i==0 && baseUrls.length<5">
-                        Add
+                    <button type="button" mat-icon-button color="primary" (click)="add()" *ngIf="i==0 && baseUrls.length<5">
+                      <mat-icon>add_circle_outline</mat-icon>
                       </button>
-                      <button type="button" mat-raised-button color="warn"  (click)="remove(i)" *ngIf="i>0">
-                        Delete
+                      
+                      <button type="button" mat-icon-button (click)="remove(i)" *ngIf="i>0">
+                        <mat-icon>delete_outline</mat-icon>
                       </button>
                   </div>
                   
