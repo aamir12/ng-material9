@@ -55,4 +55,8 @@ export class FileArrayComponent implements OnInit {
       this.baseUrls.at(i).setValue('http://google.com/'+file.name);
     }
   }
+
+  // getValidity(i) {
+  //   return (<FormArray>this.docForm.get('baseUrls')).controls[i].invalid;
+  // }
 }

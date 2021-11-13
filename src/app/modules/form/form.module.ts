@@ -6,9 +6,10 @@ import { FormComponent } from "./form.component";
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { ArryFormComponent } from './arry-form/arry-form.component';
 import { FileArrayComponent } from './file-array/file-array.component';
+import { FrmGrpArrayComponent } from './frm-grp-array/frm-grp-array.component';
 
 @NgModule({
-  declarations: [FormComponent, BasicFormComponent, ArryFormComponent, FileArrayComponent],
+  declarations: [FormComponent, BasicFormComponent, ArryFormComponent, FileArrayComponent, FrmGrpArrayComponent],
   imports: [CommonModule, SharedModule, FormRoutingModule],
 })
 export class FormModule {}

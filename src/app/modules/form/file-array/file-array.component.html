@@ -20,7 +20,7 @@
                     <button type="button" fxLayoutAlign="center center" mat-raised-button color="primary" (click)="pick(i)"> <mat-icon> attach_file</mat-icon> Attachment </button>
                     <mat-form-field class="example-form-field" >
                         <input type="text" matInput [formControlName]="i"/>
-                        <mat-error *ngIf="baseUrl.hasError('required')">Required</mat-error>
+                        <mat-error *ngIf="baseUrl.touched && baseUrl.hasError('required')">Required</mat-error>
                         <mat-error *ngIf="baseUrl.hasError('pattern')">Invalid Url</mat-error>
                     </mat-form-field>
                 </div>

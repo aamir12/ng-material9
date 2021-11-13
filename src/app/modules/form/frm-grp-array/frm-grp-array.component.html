@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>From Array with FormGroup</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column center">
+        <form [formGroup]="documentsFrm" (ngSubmit)="onFormSubmit()">
+            <div formArrayName="docDocuments" fxLayout="column">
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                    <h3> Employees Documents</h3>
+                    <button type="button" mat-icon-button color="primary" (click)="add()" *ngIf="docDocumentArray.length<5">
+                        <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                </div>
+
+                <div *ngFor="let docData of docDocumentArray.controls; let i = index" fxLayout="row wrap"  fxFlex="1" fxLayoutAlign="space-between center" [formGroupName]="i">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" >
+                        <input type="file"  #inputFile class="d-none" (change)="onSelectedFile($event,i)"/>
+            
+                        <button type="button" mat-raised-button color="primary" (click)="pick(i)">
+                            <mat-icon> attach_file</mat-icon>  Attachment 
+                        </button>
+                        
+                        <mat-form-field class="example-form-field" >
+                            <input type="text" [readonly]="true" matInput formControlName ="docName" />
+                            <mat-error *ngIf="docDocumentArray.controls[i].get('docName').touched && docDocumentArray.controls[i].get('docName').hasError('required')">Required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-form-field" >
+                            <input type="text" placeholder="Name"  matInput formControlName ="name" />
+                            <mat-error *ngIf="docDocumentArray.controls[i].get('name').touched && docDocumentArray.controls[i].get('name').hasError('required')">Required</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                
+                    <button type="button" mat-icon-button (click)="remove(i)" *ngIf="i>0">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" [disabled]="documentsFrm.invalid"> Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
