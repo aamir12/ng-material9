@@ -3,6 +3,8 @@
       <mat-card-title>File Form Array Reactive Form</mat-card-title>
     </mat-card-header>
     <mat-card-content fxLayout="column center">
+      <!-- [attributeName]="variable" eg: [formControlName] = "i" -->
+      <!-- attributeName = "property Name" eg:  formControlName = "fileName"-->
         <form [formGroup]="docForm" (ngSubmit)="onFormSubmit()">
             <b> Employees in Team :</b><br /><br />
             <label *ngIf="baseUrls?.errors?.required" class="error">
@@ -11,6 +13,10 @@
             <label *ngIf="baseUrls?.errors?.maxlength" class="error">
               Max number of Employee can be 5 only.
             </label>
+            <!-- if array of values is used then we can use the same name of get function and property eg: formArrayName="baseUrls" and   *ngFor="let baseUrl of baseUrls.controls; -->
+
+            <!-- if array of fromGroup is used then we can not use the same name of get function and property eg: formArrayName="docDocuments" and   *ngFor="let docData of docDocumentArray.controls; -->
+
             <div formArrayName="baseUrls" fxLayout="column" fxLayoutGap="10px" >
               <div
                 *ngFor="let baseUrl of baseUrls.controls; let i = index" fxLayout="row wrap"  fxFlex="1" fxLayoutAlign="space-between center">

@@ -31,6 +31,10 @@ export class SideBarComponent implements OnInit {
         link: "/form",
       },
       {
+        name: "Material Inputs",
+        link: "/matInputs",
+      },
+      {
         name: "Sorting",
         link: "/sorting",
       },
@@ -53,7 +57,7 @@ export class SideBarComponent implements OnInit {
       {
         name: "Table",
         link: "/table",
-      },
+      }
     ];
   }
 }

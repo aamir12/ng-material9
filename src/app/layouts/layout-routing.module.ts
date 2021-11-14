@@ -84,6 +84,13 @@ const routes: Routes = [
             (m) => m.ResponsiveLayoutModule
           ),
       },
+      {
+        path: "matInputs",
+        loadChildren: () =>
+          import("../modules/material-inputs/material-inputs.module").then(
+            (m) => m.MaterialInputsModule
+          ),
+      },
     ],
   },
   {
