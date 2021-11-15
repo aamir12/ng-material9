@@ -1,1 +1,67 @@
-<p>mat-check works!</p>
+<mat-card>
+    <mat-card-title>
+        Select Form AutoComplete
+    </mat-card-title>
+    <mat-card-content fxLayout="column"   fxLayoutGap="10px">
+        <h3>checked</h3>
+        <mat-checkbox [checked]="isChkChecked"> xyz </mat-checkbox>
+        
+        <h3>disableRipple</h3>
+        <mat-checkbox [disableRipple]="isRippleDisabled"> xyz </mat-checkbox>
+        
+        <h3>disabled</h3>
+        <mat-checkbox [disabled]="isDisabled"> xyz </mat-checkbox>
+        
+        <h3>indeterminate</h3>
+        <mat-checkbox [indeterminate]="isChkIndeterminate"> xyz </mat-checkbox>
+        
+        <h3>labelPosition and color</h3>
+        <ul>
+            <li>
+              <mat-checkbox labelPosition="before" color="primary"> abc </mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox labelPosition="after" color="warn"> xyz </mat-checkbox>
+            </li>
+        </ul>
+        
+        <h3>change Event</h3>
+        <mat-checkbox (change)="onChange($event)"> abc </mat-checkbox>
+        
+        <h3>indeterminateChange Event</h3>
+        <mat-checkbox [indeterminate]="isIndeterminate" [checked]="allChecked"
+            (indeterminateChange)="onIndeterminateChange($event)" (change)="onChkChange($event)">
+            City
+        </mat-checkbox>
+        <ul>
+            <li>
+            <mat-checkbox (change)="onChildChkChange($event)" [(ngModel)]="vns"> Varanasi </mat-checkbox>
+            </li>
+            <li>
+            <mat-checkbox (change)="onChildChkChange($event)" [(ngModel)]="svk"> Sivakasi </mat-checkbox>
+            </li>
+        </ul>
+
+        <form [formGroup]="chkFrm" (ngSubmit)="onSubmit()"  #chkFrm1="ngForm">
+           <mat-checkbox formControlName="chk" (change)="onChange($event)" > Form Checkbox</mat-checkbox>
+           <br>
+           <mat-error *ngIf="f1.chk.hasError('required')  && chkFrm1.submitted">
+               Your error message here
+            </mat-error>
+            <br>
+            
+            <button mat-raised-button type="button" (click)="toggleValue()">Toggle Value</button>
+
+            <button mat-raised-button type="button" (click)="chkFrm1.resetForm()">Reset Form</button>
+
+            <button mat-raised-button >submit</button>
+            {{ chkFrm.value | json  }}
+            {{ f1.chk.hasError('required') }}
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        
+        
+    </mat-card-actions>
+    
+</mat-card>
