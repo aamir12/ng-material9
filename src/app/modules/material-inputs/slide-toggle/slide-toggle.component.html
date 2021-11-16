@@ -1,1 +1,52 @@
-<p>slide-toggle works!</p>
+<mat-card>
+   
+   
+        <mat-card-title>
+            Slide Toggle
+        </mat-card-title>
+        <mat-card-content fxLayout="column"  fxLayoutAlign="start center" fxLayoutGap="10px">
+            <h4>change, dragChange and toggleChange Test</h4>
+
+            <mat-slide-toggle [formControl]="autoRenew" (change)="onChange($event)">Change (Drag or Toggle)</mat-slide-toggle>
+            <br/>
+            <mat-slide-toggle [formControl]="enable" (dragChange)="onDragChange($event)">Drag</mat-slide-toggle>
+            <br/>
+            <mat-slide-toggle [formControl]="activate" (toggleChange)="onToggleChange($event)">Toggle</mat-slide-toggle>
+            
+            <h4>focus() and toggle() Test</h4>
+            
+            <mat-slide-toggle labelPosition="before" #slide>Premium</mat-slide-toggle>
+            <br/><br/>
+            <button mat-raised-button (click)="focusTest()">Focus</button>
+            <button mat-raised-button (click)="toggleTest()">Toggle</button>
+            
+            <h4>Person Reactive Form</h4>
+            <form [formGroup]="personForm" (ngSubmit)="onFormSubmit()" #psForm="ngForm">
+              <div>
+                <mat-form-field>
+                  <input matInput placeholder="Username" formControlName="username">
+                  <mat-error *ngIf="username.hasError('required')">
+                    Username is required.
+                  </mat-error>
+                </mat-form-field>  
+              </div>
+              <div>
+                <mat-slide-toggle formControlName="activateAcc">Activate Account</mat-slide-toggle>
+                <mat-error *ngIf="activateAcc.hasError('required') && psForm.submitted">
+                  Confirm Activate Account.
+                </mat-error> 
+              </div>  
+              <div>
+                <mat-slide-toggle formControlName="premiumUser" color="primary">Premium User</mat-slide-toggle>
+              </div>  
+              <div>
+                <mat-slide-toggle formControlName="autoRenewSub" color="warn">Auto-Renew Subscription</mat-slide-toggle>
+              </div>  
+              <div>   
+                <button mat-raised-button>Submit</button>
+              </div>  
+            </form> 
+        </mat-card-content>
+        
+    
+</mat-card>

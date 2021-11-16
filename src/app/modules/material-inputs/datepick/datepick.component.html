@@ -1,1 +1,34 @@
-<p>datepick works!</p>
+<mat-card>
+    <mat-card-title>
+        Material DatePicker
+    </mat-card-title>
+    <mat-card-content >
+        <div fxLayout="column" >
+            <div fxLayout="column" fxLayoutAlign="center center" >
+                <h6>FormControl</h6>
+
+                <div fxLayout="row wrap"  fxLayoutGap="10px">
+                    <mat-form-field>
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput autocomplete="off" [matDatepicker]="dob" [formControl]="dateOfBirth">
+                        <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                        <mat-datepicker #dob></mat-datepicker>
+                    </mat-form-field> 
+                    <button mat-raised-button type="button" (click)="setDOB()"> Set Value</button>
+                    <button mat-raised-button type="button" (click)="frenchLocale()">French</button>
+                    <button mat-raised-button type="button" (click)="engLocale()"> English</button>
+                    <button mat-raised-button type="button" (click)="hindiLocale()"> Hindi</button>
+                    {{ dateOfBirth.value | date:'medium' }}
+                </div>
+            </div>
+          
+        </div>
+       
+       
+    </mat-card-content>
+    <mat-card-actions>
+        
+        
+    </mat-card-actions>
+    
+</mat-card>

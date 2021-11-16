@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Book } from './models/book';
 import { Employee } from './models/employee';
+import { Person } from './models/person';
 
 const PROFILES = [
   {id: 'dev', name: 'Developer'},
@@ -46,4 +47,8 @@ export class MatInputsService {
   saveBook(books) {
     console.log(JSON.stringify(books));
   }
+
+  savePerson(person: Person) {
+    console.log(person);  
+ }
 } 

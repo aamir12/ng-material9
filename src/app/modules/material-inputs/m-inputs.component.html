@@ -18,6 +18,30 @@
       [routerLinkActiveOptions]="{exact:true}">
       Select
     </a>
+
+    <a 
+      mat-tab-link 
+      [routerLink]="['/matInputs','toggle']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact:true}">
+      Slide Toggle
+    </a>
+
+    <a 
+      mat-tab-link 
+      [routerLink]="['/matInputs','datePicker']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact:true}">
+      Date Picker
+    </a>
+
+    <a 
+      mat-tab-link 
+      [routerLink]="['/matInputs','inputs']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact:true}">
+      Inputs
+    </a>
  </nav>  
  <div>	
    <router-outlet></router-outlet>	
