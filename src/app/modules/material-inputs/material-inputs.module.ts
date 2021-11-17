@@ -10,14 +10,17 @@ import { MatInputsService } from './mat-input.service';
 import { DatepickComponent } from './datepick/datepick.component';
 import { InputsComponent } from './inputs/inputs.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { SimpleModalComponent } from './dialog/simple-modal/simple-modal.component';
 
 @NgModule({
-  declarations: [MInputsComponent, MatCheckComponent, SelectSearchComponent, SelectComponent, DatepickComponent, InputsComponent, SlideToggleComponent],
+  declarations: [MInputsComponent, MatCheckComponent, SelectSearchComponent, SelectComponent, DatepickComponent, InputsComponent, SlideToggleComponent, DialogComponent, SimpleModalComponent],
   imports: [
     CommonModule,
     MaterialInputsRoutingModule,
     SharedModule
   ],
-  providers:[MatInputsService]
+  providers:[MatInputsService],
+  entryComponents:[SimpleModalComponent]
 })
 export class MaterialInputsModule { }

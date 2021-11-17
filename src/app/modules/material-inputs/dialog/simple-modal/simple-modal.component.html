@@ -1,0 +1,59 @@
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="pb-10 mat-typography">
+    <h2 mat-dialog-title>{{dialogData?.title}}</h2>
+    <button class="btn-sm mat-warn" mat-button mat-dialog-close tabindex="-1">
+        <mat-icon class="icon-sm">close</mat-icon>
+      </button>
+</div>
+
+<form [formGroup]="form" class="mat-typography">
+<div mat-dialog-content class="createNotificationDialog" >
+        <mat-form-field>
+            <input matInput
+                    placeholder="Course Description"
+                formControlName="description">
+        </mat-form-field>
+
+        <div formArrayName="docDocuments" fxLayout="column" id="scrollDiv"  #scrollDiv>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <h3> Employees Documents</h3>
+                <button type="button" mat-icon-button color="primary" (click)="add()">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+            </div>
+
+            <div *ngFor="let docData of docDocumentArray.controls; let i = index" fxLayout="row wrap"  fxFlex="1" fxLayoutAlign="space-between center" [formGroupName]="i" id="newDiv{{i}}">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" >
+                    <input type="file"  #inputFile class="d-none" (change)="onSelectedFile($event,i)"/>
+        
+                    <button type="button" mat-raised-button color="primary" (click)="pick(i)">
+                        <mat-icon> attach_file</mat-icon>  Attachment 
+                    </button>
+                    
+                    <mat-form-field class="example-form-field" >
+                        <input type="text" [readonly]="true" matInput formControlName ="docName" />
+                        <mat-error *ngIf="docDocumentArray.controls[i].get('docName').touched && docDocumentArray.controls[i].get('docName').hasError('required')">Required</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-form-field" >
+                        <input type="text" placeholder="Name"  matInput formControlName ="name" />
+                        <mat-error *ngIf="docDocumentArray.controls[i].get('name').touched && docDocumentArray.controls[i].get('name').hasError('required')">Required</mat-error>
+                    </mat-form-field>
+
+                </div>
+            
+                <button type="button" mat-icon-button (click)="remove(i)" *ngIf="i>0">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+<mat-dialog-actions align="end" fxLayoutGap="8px" class="notificationBtns">
+    <button class="mat-raised-button"  mat-dialog-close>No</button>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+  </mat-dialog-actions>
+
+</form>
