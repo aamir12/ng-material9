@@ -1,1 +1,147 @@
-<p>inputs works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Inputs
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <input matInput placeholder="Amount" 
+                [formControl]="amount" 
+                (change)="onAmountChange()">
+        </mat-form-field> 
+        <mat-form-field>
+            <textarea matInput 
+                placeholder="Comment" 
+                [formControl]="commentFC" 
+                (change)="onCommentChange()">
+            </textarea>
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Enter City</mat-label>
+            <input matInput placeholder="City">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Enter City</mat-label>
+            <input matInput placeholder="City" [formControl]="myCity" >
+            <mat-error *ngIf="myCity.hasError('required')">
+                City is required.
+            </mat-error>  
+            <mat-hint>Native place city</mat-hint>
+        </mat-form-field> 
+        {{ myCity.value  }}
+
+        <mat-form-field>
+            <mat-label>Enter Amount</mat-label>
+            <input matInput placeholder="Amount" [formControl]="amountInp">
+            <mat-hint>Indian Rupee</mat-hint>
+            <span matPrefix>INR </span>
+            <span matSuffix>.00</span>  
+            <mat-error *ngIf="amountInp.hasError('required')">
+              Amount is required.
+            </mat-error>  
+        </mat-form-field> 
+
+        <mat-form-field>
+            <mat-label>Write Your Comment</mat-label>
+            <textarea matInput placeholder="Comment" 
+                 [formControl]="commentFCInp" #comment></textarea>
+            <mat-hint align="end">{{comment.value?.length || 0}}/30</mat-hint>
+            <mat-error *ngIf="commentFCInp.hasError('required')">
+                Comment is required.
+            </mat-error>
+            <mat-error *ngIf="commentFCInp.hasError('maxlength')">
+                Max length is 30.
+            </mat-error>        
+          </mat-form-field> 
+
+          <br>
+
+          <mat-form-field>
+            <mat-label>Enter Amount</mat-label>
+            <input matInput placeholder="Amount" 
+                [formControl]="amountInp1" 
+                [errorStateMatcher]="esMatcher"
+                (change)="onAmountChange()">
+            <mat-hint>Indian Rupee</mat-hint>
+            <span matPrefix>INR </span>
+            <span matSuffix>.00</span>  
+            <mat-error *ngIf="amountInp1.hasError('required')">
+              Amount is required.
+            </mat-error>  
+            <mat-error *ngIf="amountInp1.hasError('min')">
+              Minimum Amount is 100.
+            </mat-error>  
+            <mat-error *ngIf="amountInp1.hasError('max')">
+              Maximum Amount is 200.
+            </mat-error>        
+          </mat-form-field>
+          
+          <br/>
+          <mat-form-field>
+            <textarea matInput 
+                placeholder="Comment" 
+                [formControl]="commentFCInp1" 
+                [errorStateMatcher]="esMatcher"
+                (change)="onCommentChange()">
+            </textarea>
+            <mat-hint align="end">{{commentFCInp1.value?.length || 0}}/30</mat-hint>
+            <mat-error *ngIf="commentFCInp1.hasError('required')">
+              Comment is required.
+            </mat-error>
+            <mat-error *ngIf="commentFCInp1.hasError('maxlength')">
+              Max length is 30.
+            </mat-error>        
+          </mat-form-field>
+
+          <br>
+          <mat-form-field>
+            <textarea matInput 
+              placeholder="Description" 
+              [formControl]="descFC" 
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              cdkAutosizeMaxRows="5"
+              #autosize="cdkTextareaAutosize"
+              (change)="onDescChange()"
+              >
+            </textarea>
+            <mat-error *ngIf="descFC.hasError('required')">
+              Description is required.
+            </mat-error>
+          </mat-form-field> 
+
+        <br>
+
+        <div>
+            <mat-form-field [style.fontSize]="fontSize.value">
+                <textarea matInput 
+                    placeholder="Content" 
+                    [formControl]="contentFCInp2" 
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+                    cdkAutosizeMaxRows="5"
+                    #cfcAutosize="cdkTextareaAutosize">
+                </textarea>
+            </mat-form-field>
+        </div>
+        <div>   
+            <button mat-button (click)="resetTextAreaSize()">Reset Textarea Size</button>
+        </div>
+        <br/>
+        <div>  
+            <mat-form-field>
+                <mat-label>Select Font size</mat-label>
+                <mat-select #fontSize value="15px" (selectionChange)="resizeTextArea()">
+                <mat-option value="10px">10px</mat-option>
+                <mat-option value="15px">15px</mat-option>
+                <mat-option value="20px">20px</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> 
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+</mat-card>
+
+
+

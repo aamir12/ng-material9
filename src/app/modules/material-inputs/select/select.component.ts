@@ -47,10 +47,16 @@ export class SelectComponent implements OnInit {
     this.resetForm();
   }
   setDefault() {
+    // let employee = {
+    //   name: 'Amit Singh',
+    //   profile: this.allProfiles[2],
+    //   skills: [this.allSkills[1], this.allSkills[2]]
+    // };
+
     let employee = {
-      name: 'Amit Shah',
-      profile: this.allProfiles[2],
-      skills: [this.allSkills[1], this.allSkills[2]]
+      name: 'Amit Singh',
+      profile: this.allProfiles[2].id,
+      skills: [this.allSkills[1].id, this.allSkills[2].id]
     };
     this.empForm.setValue(employee);
   }
