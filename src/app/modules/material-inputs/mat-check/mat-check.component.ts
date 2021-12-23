@@ -38,6 +38,8 @@ export class MatCheckComponent implements OnInit {
 
     const every = [this.vns,this.svk].every(x=>x);
     const some = [this.vns,this.svk].some(x=>x);
+    console.log(every);
+    console.log(some);
     if(every){
       this.allChecked = true;
       this.isIndeterminate = false;

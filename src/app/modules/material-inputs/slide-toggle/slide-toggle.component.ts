@@ -17,19 +17,18 @@ export class SlideToggleComponent implements OnInit {
      //Create a form
     this.personForm = new FormGroup({
       username: new FormControl('',[Validators.required]),
-      activateAcc: new FormControl('',[Validators.required]),
+      activateAcc: new FormControl(false,[Validators.required]),
       premiumUser: new FormControl(false),
       autoRenewSub: new FormControl(true)
     });
   } 
   autoRenew = new FormControl();  
   onChange(ob: MatSlideToggleChange) {
-  console.log(ob.checked);
-  let matSlideToggle: MatSlideToggle = ob.source;
-  console.log(matSlideToggle.color);
-  console.log(matSlideToggle.required);
-
-  console.log(this.autoRenew.value);
+    console.log(ob.checked);
+    let matSlideToggle: MatSlideToggle = ob.source;
+    console.log(matSlideToggle.color);
+    console.log(matSlideToggle.required);
+    console.log(this.autoRenew.value);
   }
   enable = new FormControl();
   onDragChange() {

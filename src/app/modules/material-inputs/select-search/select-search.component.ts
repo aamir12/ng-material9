@@ -53,6 +53,7 @@ export class SelectSearchComponent implements OnInit {
     if(this.bookForm.invalid){
       return;
     }
+    console.log(this.book.value);
     this.matInputService.saveBook(this.bookForm.value);
     this.resetForm();
   }

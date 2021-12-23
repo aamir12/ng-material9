@@ -80,6 +80,7 @@ export class BasicFormComponent implements OnInit {
         hobby: "Cricket",
         tc: true,
         extra: "Dummy",
+        chkValidation:false
       }
       // ,
       // {

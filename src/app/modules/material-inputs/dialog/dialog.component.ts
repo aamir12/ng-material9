@@ -42,7 +42,7 @@ export class DialogComponent implements OnInit {
           console.log("Dialog output:", value)
         }
       }
-  );  
+    );  
   }
 
 }

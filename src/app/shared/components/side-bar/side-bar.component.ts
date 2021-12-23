@@ -57,7 +57,15 @@ export class SideBarComponent implements OnInit {
       {
         name: "Table",
         link: "/table",
-      }
+      },
+      {
+        name: "Router outlet",
+        link: "/routlet",
+      },
+      // {
+      //   name: "Dynamic table",
+      //   link: "/dtable",
+      // }
     ];
   }
 }

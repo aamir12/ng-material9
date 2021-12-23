@@ -9,7 +9,7 @@
       <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
         <p>
           <b>Team Name : </b> <input formControlName="teamName" /> <br /><label
-            *ngIf="teamName?.dirty && teamName?.errors?.required"
+            *ngIf="teamName?.dirty  && teamName?.errors?.required"
             class="error"
           >
             Team name required.
@@ -25,8 +25,7 @@
         <div formArrayName="employees">
           <div
             *ngFor="let emp of employees.controls; let i = index"
-            class="employee"
-          >
+            class="employee">
             <p>
               <b>Employee {{ i + 1 }} : </b>
               <input [formControlName]="i" />

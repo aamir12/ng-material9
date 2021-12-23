@@ -19,7 +19,7 @@ export class SelectComponent implements OnInit {
   constructor(private matInputService:MatInputsService) { }
   
   ngOnInit() {
-    this.empForm =new FormGroup({
+    this.empForm = new FormGroup({
       name:  new FormControl('', [Validators.required]),
       profile:  new FormControl('', [Validators.required]),
       skills:  new FormControl('', [Validators.required])

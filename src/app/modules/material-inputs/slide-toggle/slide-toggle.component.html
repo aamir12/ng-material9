@@ -32,6 +32,7 @@
               </div>
               <div>
                 <mat-slide-toggle formControlName="activateAcc">Activate Account</mat-slide-toggle>
+                {{ activateAcc.hasError('required') }}
                 <mat-error *ngIf="activateAcc.hasError('required') && psForm.submitted">
                   Confirm Activate Account.
                 </mat-error> 

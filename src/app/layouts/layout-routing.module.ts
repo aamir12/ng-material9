@@ -91,6 +91,18 @@ const routes: Routes = [
             (m) => m.MaterialInputsModule
           ),
       },
+      {
+        path: "routlet",
+        loadChildren: () =>
+          import("../modules/routlet/routlet.module").then(
+            (m) => m.RoutletModule
+          ),
+      },
+      {
+        path: "dtable",
+        loadChildren: () =>
+          import("../modules/dtable/dtable.module").then((m) => m.DTableModule),
+      },
     ],
   },
   {
