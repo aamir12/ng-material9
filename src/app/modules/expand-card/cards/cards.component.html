@@ -1,0 +1,12 @@
+<div class="container">
+    <div
+      class="panel"
+      (click)="setActive(i)"
+      *ngFor="let back of backgrounds;let i = index"
+      [class.active]="back.isActive"
+      [ngStyle]="{'background-image':'url('+back.image+')'}"
+    >
+      <h3>{{ back.name }}</h3>
+    </div>
+  </div>
+  

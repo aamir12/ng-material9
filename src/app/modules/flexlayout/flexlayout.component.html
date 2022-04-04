@@ -53,7 +53,7 @@
 
 <h1>fxFlexOrder</h1>
 <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px">
-  <div class="one box"  fxFlexOrder="3">One</div>
+  <div class="one box" fxFlexOrder="3">One</div>
   <div class="two box" fxFlexOrder="2">Two</div>
   <div class="three box" fxFlexOrder="1">Three</div>
 </div>
@@ -78,3 +78,40 @@
   <div class="two box">Two</div>
   <div class="three box">Three</div>
 </div>
+
+<h1>New Layout</h1>
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <div class="one box">One</div>
+  <div class="two box">Two</div>
+  <div class="three box">Three</div>
+</div>
+
+<h1>New Layout fxFill</h1>
+<div fxLayout="row" fxFill>
+  <div fxFlex="20" class="one" fxLayoutAlign="center center">B</div>
+  <div fxFlex="80" class="two" fxLayoutAlign="center center">C</div>
+</div>
+
+<div fxLayout="row" fxFill>
+  <div class="one" fxLayoutAlign="center center">B</div>
+  <div class="two" fxLayoutAlign="center center">C</div>
+</div>
+
+<h1>Parent</h1>
+<p>
+  fxLayout (row,column wrap),fxLayoutAlign,fxLayoutGap, (fxFill,fxFlexFill),
+  dir(ltr,rtl)
+</p>
+<h2>Child</h2>
+<p>fxFlex, (fxFill,fxFlexFill),fxFlexOffset,fxFlexAlign</p>
+
+<h3>Responsive</h3>
+fxLayout.xs="column" fxLayout.sm="column" fxFlex(full width)
+<br />
+<ul>
+  <li>md = screen and (min-width: 960px) and (max-width: 1279.99px)</li>
+  <li>lt-lg = screen and (max-width: 1279.99px)</li>
+  <li>lt-xl = screen and (max-width: 1919.99px)</li>
+  <li>gt-sm = screen and (min-width: 960px)</li>
+  <li>gt-xs = screen and (min-width: 600px)</li>
+</ul>

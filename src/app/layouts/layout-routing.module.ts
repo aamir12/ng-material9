@@ -99,10 +99,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: "dtable",
-        loadChildren: () =>
-          import("../modules/dtable/dtable.module").then((m) => m.DTableModule),
-      },
+        path:"expandCard",
+        loadChildren:() => import('../modules/expand-card/expand-card.module').then(m=>m.ExpandCardModule)
+      }
+      
     ],
   },
   {
@@ -116,6 +116,7 @@ const routes: Routes = [
       },
     ],
   },
+
 ];
 
 @NgModule({

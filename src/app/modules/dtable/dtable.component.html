@@ -1,27 +1,44 @@
-<mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+<!-- 
+      <table class="compact-table full-width" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"> -->
 
-  <ng-container matColumnDef="seqNo">
+
+<input name="search" type="text"  #searchInp />       
+<mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource"   matSort (matSortChange)="sortData($event)">
+
+  <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.seqNo}}</mat-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+  <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</mat-header-cell>
       <mat-cell class="description-cell"
-                *matCellDef="let lesson">{{lesson.description}}</mat-cell>
-
+                *matCellDef="let lesson">{{lesson.firstname}}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="duration">
-      <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+  <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Lastname</mat-header-cell>
       <mat-cell class="duration-cell"
-                *matCellDef="let lesson">{{lesson.duration}}</mat-cell>
+                *matCellDef="let lesson">{{lesson.lastname}}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+    <mat-cell class="duration-cell"
+              *matCellDef="let lesson">{{lesson.email}}</mat-cell>
+  </ng-container>
 
-  
-  <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)">
-  </mat-row>
+<ng-container matColumnDef="reg_date">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>Reg date</mat-header-cell>
+  <mat-cell class="duration-cell"
+            *matCellDef="let lesson">{{lesson.reg_date}}</mat-cell>
+</ng-container>
+
+<mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns1" (click)="onRowClicked1(row)"></mat-row>
 
 </mat-table>
+
+<mat-paginator class="custom-paginator" [pageIndex]="0" (page)="onPageChange($event)" #paginator
+[pageSize]="assignPageSize"
+  [length]="dataCount" [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>

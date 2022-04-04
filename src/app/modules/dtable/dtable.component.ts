@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort,Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { DTableService } from './dtable.service';
 
@@ -53,32 +53,66 @@ const NAMES: string[] = [
 export class DTableComponent implements AfterViewInit,OnInit {
   //displayedColumns: string[] = ['id', 'name', 'progress', 'fruit']; //step1
   displayedColumns = ["seqNo", "description", "duration"];
-  dataSource: MatTableDataSource<UserData>; //step2
+  displayedColumns1 = ["id", "firstname", "lastname","email","reg_date"];
+  //dataSource: MatTableDataSource<UserData>; //step2
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild('searchInp',{static:true}) searchInp:ElementRef;
   search = new FormControl();
-  constructor(private dtableService:DTableService) { 
-     // Create 100 users
-     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  offset = 0;
+  limit = 10;
+  currentPage = 1;
+  itemCount: any;
+  filterVal: any;
+  sortBy: string = 'id';
+  sortDirection: string = 'asc';
+  public dataSource: MatTableDataSource<any>;
+  sortedData: any;
+  isLoading = false;
 
-     // Assign the data to the data source for the table to render
-     this.dataSource = new MatTableDataSource(users); //step3
-    //  setTimeout(()=>{
-    //    this.dataSource = new MatTableDataSource([]); //step3
-    //  },2000)
+  assignPageSize : any = 0;
+  dataCount:any = 0;
+  constructor(private dtableService:DTableService) { 
+    this.dataSource = new MatTableDataSource();
+    this.sortedData = this.dataSource.data.slice();
   }
 
   ngOnInit(){
-    this.search.valueChanges.subscribe(val=>{
-      this.dataSource.filter = val.trim().toLowerCase();
-      if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-      }
-    });
+    // this.search.valueChanges.subscribe(val=>{
+    //   this.dataSource.filter = val.trim().toLowerCase();
+    //   if (this.dataSource.paginator) {
+    //     this.dataSource.paginator.firstPage();
+    //   }
+    // });
+    this.fetchData();
+  }
 
-    this.dtableService.findUsers().subscribe(data=>{
-      console.log(data);
+  fetchData(val?){
+    this.isLoading = true;
+    const formData: FormData = new FormData();
+    //formData.append('dataApiName', 'ItemFetchBasedOnrequestTypeCount');
+    if (val) {
+      formData.append('data', JSON.stringify({
+        'keyword': val,
+        'limit': 2,
+        'pageno': 0
+      }));
+    } else {
+      formData.append('data', JSON.stringify({
+        
+        'limit': 2,
+        'pageno': 0
+      }));
+    }
+    this.dataSource.data = [];
+    const search = this.searchInp ? this.searchInp.nativeElement.value : '';
+    this.dtableService.newFindUsers(formData).subscribe(res=>{
+      //console.log(res);
+      if(res.rows){
+        this.dataSource.data = res.rows;
+        this.dataCount = res.count;
+      }
     });
   }
 
@@ -98,6 +132,46 @@ export class DTableComponent implements AfterViewInit,OnInit {
 
   onRowClicked(row){
     console.log(row);
+  }
+
+  onRowClicked1(row){
+    console.log(row);
+  }
+
+
+  sortData(sort: Sort) {
+    const data = this.dataSource.data.slice();
+    if (!this.sort.active || !this.sort.start) {
+      //this.dataSource.data = data;
+      return;
+    }
+
+
+
+    const isAsc = sort.direction === 'asc';
+    switch (sort.active) {
+      case 'name':
+        //this.dataSource.data = this.esdCoreService.sortListByKey(data, 'approvalFlowDesc', isAsc);
+        break;
+      case 'id':
+        //this.dataSource.data = this.esdCoreService.sortListByNumberKey(data, 'approvalFlowId', isAsc);
+        break;
+      case 'requestTypeName':
+        //this.dataSource.data = this.esdCoreService.sortListByKey(data, 'requestTypeName', isAsc);
+        break;
+      case 'type':
+        //this.dataSource.data = this.esdCoreService.sortListByKey(data, 'approvalTypeName', isAsc);
+        break;
+    }
+  }
+
+  onPageChange(page) {
+    console.log(page)
+    this.offset = page.pageIndex * this.paginator.pageSize;
+    this.limit = page.pageSize;
+    this.assignPageSize = page.pageSize;
+    this.currentPage = page.pageIndex;
+    this.fetchData()
   }
 
 }
